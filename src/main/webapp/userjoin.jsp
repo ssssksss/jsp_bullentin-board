@@ -47,7 +47,7 @@
     </header>
     <div class="userjoin_container">
     	<h2> 회원가입 페이지 </h2>
-    	<form method="post" action="">
+    	<form method="post" action="home.do">
     		<input type="text" placeholder="아이디를 입력하세요" required> 
     		<input type="text" placeholder="비밀번호를 입력하세요" required> 
     		<input type="submit" value="회원가입"> 

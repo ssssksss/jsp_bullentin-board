@@ -19,9 +19,9 @@
             <div class="header_menu_container"> 
                    <ul>
                        <li> 로고 </li>
-                       <li> <a href="#"> 홈 </a> </li>
+                       <li> <a href="home.jsp"> 홈 </a> </li>
                        <li> <a href="#"> 게시판 </a>  </li>
-                       <li> <a href="#"> 로그인  </a> </li>
+                       <li> <a href="userlogin.jsp"> 로그인  </a> </li>
                        <li> <a href="#"> 회원가입 </a> </li>
                    </ul>
             </div>

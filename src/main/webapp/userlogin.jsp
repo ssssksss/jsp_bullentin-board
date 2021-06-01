@@ -37,19 +37,19 @@
             <div class="header_menu_container"> 
                    <ul>
                        <li> 로고 </li>
-                       <li> <a href="#"> 홈 </a> </li>
+                       <li> <a href="home.jsp"> 홈 </a> </li>
                        <li> <a href="#"> 게시판 </a>  </li>
-                       <li> <a href="#"> 로그인  </a> </li>
-                       <li> <a href="#"> 회원가입 </a> </li>
+                       <li> <a href="userlogin.jsp"> 로그인  </a> </li>
+                       <li> <a href="userjoin.jsp"> 회원가입 </a> </li>
                    </ul>
             </div>
         </div>
     </header>
     <div class="userlogin_container">
     	<h2> 로그인 페이지 </h2>
-    	<form method="post" action="">
-    		<input type="text" placeholder="아이디를 입력하세요" required> 
-    		<input type="text" placeholder="비밀번호를 입력하세요" required> 
+    	<form method="post" action="userlogin.do">
+    		<input type="text" name="userId" placeholder="아이디를 입력하세요" required> 
+    		<input type="text" name="userPwd" placeholder="비밀번호를 입력하세요" required> 
     		<input type="submit" value="로그인"> 
     	</form>
     </div>

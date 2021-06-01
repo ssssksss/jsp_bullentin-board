@@ -36,28 +36,28 @@ public class UserDAO {
 		}
 	}
 	
-	public void userjoin() {
-		connect();
-		String sql = "SELECT * FROM JBB_USER_TABLE";
-		try {
-			System.out.println("아이디를 찾습니다.");
-			pstmt=conn.prepareStatement(sql);
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()) {
-				if(rs.getString("USER_ID")==userDTO.getUserId()) {
-					System.out.println("아이디를 찾았습니다.");
-					disconnect();
-					return userDTO.getUserId();
-				}
-			}
-			rs.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println("아이디 찾기에 실패했습니다.");
-		disconnect();
-		return null;
-	}
+//	public void userjoin() {
+//		connect();
+//		String sql = "SELECT * FROM JBB_USER_TABLE";
+//		try {
+//			System.out.println("아이디를 찾습니다.");
+//			pstmt=conn.prepareStatement(sql);
+//			ResultSet rs=pstmt.executeQuery();
+//			while(rs.next()) {
+//				if(rs.getString("USER_ID")==userDTO.getUserId()) {
+//					System.out.println("아이디를 찾았습니다.");
+//					disconnect();
+//					return userDTO.getUserId();
+//				}
+//			}
+//			rs.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("아이디 찾기에 실패했습니다.");
+//		disconnect();
+//		return null;
+//	}
 	//유저 회원가입
 	
 	//유저 로그인
