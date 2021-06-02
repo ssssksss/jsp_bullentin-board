@@ -22,7 +22,7 @@
                        <li> <a href="home.jsp"> 홈 </a> </li>
                        <li> <a href="#"> 게시판 </a>  </li>
                        <li> <a href="userlogin.jsp"> 로그인  </a> </li>
-                       <li> <a href="#"> 회원가입 </a> </li>
+                       <li> <a href="userjoin.jsp"> 회원가입 </a> </li>
                    </ul>
             </div>
         </div>

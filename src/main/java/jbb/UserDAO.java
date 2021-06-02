@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class UserDAO {
@@ -12,6 +13,7 @@ public class UserDAO {
 	String password = "1234";
 	Connection conn = null;
 	PreparedStatement pstmt=null;
+	
 	
 	public void connect() { //OracleDB연결
 		try{
@@ -35,7 +37,39 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	public UserDTO userSearch() {
+		connect();
+		
+		disconnect();
+		return null;
+	}
 	
+	public int userLogin(UserDTO userDTO) {
+		connect();
+		String sql = "SELECT * FROM JBB_USER_TABLE";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				if(rs.getString("user_id").equals(userDTO.getUserId())) {
+					if(rs.getString("user_pwd").equals(userDTO.getUserId())) {
+						System.out.println("UserDAO : 유저 로그인 성공");
+						return 1;
+					}
+					System.out.println("UserDAO : 유저의 비번이 틀렸습니다.");
+					return 2;
+				}
+			}
+			System.out.println("UserDAO : 유저의 정보가 존재하지 않습니다.");
+			return 3;
+		}  catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		System.out.println("UserDAO : 로그인 중 에러 발생");
+		return 4;
+	}
 //	public void userjoin() {
 //		connect();
 //		String sql = "SELECT * FROM JBB_USER_TABLE";

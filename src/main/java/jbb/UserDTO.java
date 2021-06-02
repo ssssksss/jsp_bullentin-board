@@ -8,7 +8,6 @@ public class UserDTO {
 		
 	}
 	public UserDTO(String userId, String userPwd) {
-		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 	}
