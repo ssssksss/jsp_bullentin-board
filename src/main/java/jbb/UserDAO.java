@@ -6,14 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class UserDAO {
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "c##coin666";
 	String password = "1234";
 	Connection conn = null;
 	PreparedStatement pstmt=null;
-	
 	
 	public void connect() { //OracleDB연결
 		try{
@@ -24,7 +22,6 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-	
 	public void disconnect() {
 		try {
 			System.out.println("DB가 종료되었습니다.");
@@ -33,17 +30,28 @@ public class UserDAO {
 			}
 			conn.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public UserDTO userSearch() {
+	//유저 찾기 - 회원가입에서 아이디 유효성 검사 사용
+	public boolean userSearch(String userId){
 		connect();
-		
-		disconnect();
-		return null;
+		String sql = "SELECT user_id FROM JBB_USER_TABLE WHERE user_id="+userId;
+		ResultSet rs;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				if(rs.getString("user_id").equals(userId)) {
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
-	
+	//유저 로그인
 	public int userLogin(UserDTO userDTO) {
 		connect();
 		String sql = "SELECT * FROM JBB_USER_TABLE";
@@ -70,33 +78,36 @@ public class UserDAO {
 		System.out.println("UserDAO : 로그인 중 에러 발생");
 		return 4;
 	}
-//	public void userjoin() {
-//		connect();
-//		String sql = "SELECT * FROM JBB_USER_TABLE";
-//		try {
-//			System.out.println("아이디를 찾습니다.");
-//			pstmt=conn.prepareStatement(sql);
-//			ResultSet rs=pstmt.executeQuery();
-//			while(rs.next()) {
-//				if(rs.getString("USER_ID")==userDTO.getUserId()) {
-//					System.out.println("아이디를 찾았습니다.");
-//					disconnect();
-//					return userDTO.getUserId();
-//				}
-//			}
-//			rs.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("아이디 찾기에 실패했습니다.");
-//		disconnect();
-//		return null;
-//	}
 	//유저 회원가입
-	
-	//유저 로그인
-	
+	public boolean userJoin(UserDTO userDTO) {
+		connect();
+		String user_id = userDTO.getUserId();
+		String user_pwd = userDTO.getUserPwd();
+		String sql="insert into jbb_user_table values('"+user_id+"','"+user_pwd+"')";
+		
+		//일치하는 아이디가 없을 경우
+		if(!userSearch(userDTO.getUserId())) {
+			try {
+				pstmt=null;
+				pstmt=conn.prepareStatement(sql);
+				pstmt.executeUpdate();
+				System.out.println("DB에 회원의 정보를 저장하였습니다.");
+				disconnect();
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			System.out.println("DB에 일치하는 아이디가 존재합니다.");
+		}
+		disconnect();
+		return false;
+	}
+
 	//유저 비밀번호 변경
+	
+	//유저 회원정보 수정
 	
 	//유저 삭제
 }

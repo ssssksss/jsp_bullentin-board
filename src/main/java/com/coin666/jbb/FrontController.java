@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import doContorller.DoUserJoin;
 import doContorller.DoUserLogin;
-import doContorller.UserSearchController;
+import doContorller.DoUserLogout;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +25,8 @@ public class FrontController extends HttpServlet {
     	list = new HashMap<String, Controller>();
     	
         list.put("userlogin.do",new DoUserLogin());
-        list.put("home.do",new UserSearchController());
+        list.put("userlogout.do",new DoUserLogout());
+        list.put("userjoin.do",new DoUserJoin());
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
