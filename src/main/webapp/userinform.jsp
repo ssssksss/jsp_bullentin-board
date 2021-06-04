@@ -69,7 +69,7 @@
     </header>
     <div class="userinform_container">
     	<h2> 유저 정보 </h2>
-        <p> 유저 아이디 : 홍길동 </p>
+        <p> 유저 아이디 : ${sessionScope.userId} </p>
         <div class="userinform_btn">
             <a href="#"> 비밀번호 수정 </a>
             <a href="#"> 계정 삭제 </a>
