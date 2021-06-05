@@ -55,7 +55,7 @@
                        </c:when>
                        <c:otherwise>
                        		<li> <a href="userlogout.do"> 로그아웃  </a> </li>	
-                       		<li><a href="#"> 회원정보 </a></li>	
+                       		<li><a href="userinform.jsp"> 회원정보 </a></li>	
                        </c:otherwise>
                        </c:choose>
                    </ul>

@@ -63,14 +63,18 @@
                        		<li> <a href="userjoin.jsp"> 회원가입 </a> </li>
                        </c:when>
                        <c:otherwise>
-                       		<li> <a href="userlogout.do"> 로그아웃  </a> </li>
-                       		<li><a href="#"> 회원정보 </a></li>
+                       		<li><a href="userlogout.do"> 로그아웃  </a> </li>
+                       		<li><a href="userinform.jsp"> 회원정보 </a></li>
                        </c:otherwise>
                        </c:choose>
                    </ul>
             </div>
         </div>
     </header>
+    <c:if test="${!sessioncheck eq null}"> 
+    	pageContext.forward("UserLoginPage.jsp");
+    </c:if>
+    <c:if test="${sessioncheck eq null}"> 
     <div class="jbblist_container">
     	<h2> 게시판 </h2>
     	<table>
@@ -94,5 +98,6 @@
             </tr>
     	</table>
     </div>
+    </c:if>
 </body>
 </html>
